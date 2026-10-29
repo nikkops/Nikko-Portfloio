@@ -1,0 +1,31 @@
+:root {
+  /* Water gradient, surface to depth */
+  --water-1: #6fe3fa;
+  --water-2: #2bb4ee;
+  --water-3: #1a78e0;
+  --water-4: #0f45c4;
+  --water-5: #0a2794;
+
+  /* Surface pattern tones */
+  --noise-dark: #1468d6;
+  --noise-light: #7fe4fb;
+  --noise-pale: #ddfbff;
+
+  /* Panels and text */
+  --navy: #03163e;
+  --navy-text: #031a47;
+  --white: #ffffff;
+
+  /* Arcana card frame */
+  --card-1: #2a5fb8;
+  --card-2: #071d5a;
+
+  /* Shape */
+  --slant: -12deg;
+  --shadow-offset: 6px;
+
+  /* Type */
+  --font-heading: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}

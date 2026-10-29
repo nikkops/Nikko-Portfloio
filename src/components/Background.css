@@ -1,0 +1,13 @@
+.water-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    var(--water-1) 0%,
+    var(--water-2) 25%,
+    var(--water-3) 50%,
+    var(--water-4) 75%,
+    var(--water-5) 100%
+  );
+}
