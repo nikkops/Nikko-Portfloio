@@ -1,3 +1,4 @@
+/* CSS gradient underneath: shown while the shader starts, and as the fallback without WebGL */
 .water-bg {
   position: fixed;
   inset: 0;
@@ -10,4 +11,9 @@
     var(--water-4) 75%,
     var(--water-5) 100%
   );
+}
+.water-bg__canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
