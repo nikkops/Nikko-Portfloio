@@ -1,0 +1,45 @@
+.keyguide {
+  text-align: right;
+  color: var(--white);
+}
+.keyguide__prompt {
+  margin: 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--white);
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-weight: 700;
+  font-size: clamp(1.2rem, min(2.4vw, 4vh), 2.6rem);
+}
+.keyguide__keys {
+  margin: 0.7rem 0 0;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.75rem;
+}
+.keyguide__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.keyguide kbd {
+  padding: 0.5em 0.8em;
+  border: 1px solid #55d6f5;
+  background: rgba(3, 22, 62, 0.55);
+}
+@media (hover: none) {
+  .keyguide__keys {
+    display: none;
+  }
+}
+.keyguide--left {
+  text-align: left;
+}
+.keyguide--left .keyguide__keys {
+  justify-content: flex-start;
+}

@@ -54,3 +54,8 @@ a {
     scroll-behavior: auto !important;
   }
 }
+
+.screen {
+  position: relative;
+  min-height: 100dvh;
+}
