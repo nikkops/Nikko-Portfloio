@@ -38,6 +38,7 @@ export default function Menu() {
 
   return (
     <div className="menu">
+      <div className="menu__veil" aria-hidden="true" />
       <div className="menu__divider" aria-hidden="true" />
       <div className="menu__ring" aria-hidden="true" />
       <span className="menu__bubble menu__bubble--a" aria-hidden="true" />

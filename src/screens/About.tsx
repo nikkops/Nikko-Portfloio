@@ -64,6 +64,7 @@ export default function About() {
 
   return (
     <div className="about" data-revealed={revealed}>
+      <div className="about__veil" aria-hidden="true" />
       <div className="about__divider" aria-hidden="true" />
       <div className="about__ring about__ring--a" aria-hidden="true" />
       <div className="about__ring about__ring--b" aria-hidden="true" />

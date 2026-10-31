@@ -79,6 +79,20 @@
   z-index: 1;
 }
 
+/* Low-opacity white layer on the menu side, same as the Projects pages.
+   It shares the divider's position and slant, so its left edge always runs along the line. */
+.menu__veil {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 52%;
+  right: -50%;
+  background: rgba(255, 255, 255, 0.14);
+  transform: skewX(-9deg);
+  z-index: 0;
+  pointer-events: none;
+}
+
 /* Decorative ring + bubbles */
 .menu__ring {
   position: absolute;
@@ -246,7 +260,8 @@
     padding: clamp(12px, 3vh, 28px) 24px 110px 16px;
     justify-content: flex-start;
   }
-  .menu__divider {
+  .menu__divider,
+  .menu__veil {
     left: 48%;
   }
   .menu__label {

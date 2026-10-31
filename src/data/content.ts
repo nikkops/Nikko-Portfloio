@@ -16,7 +16,7 @@ export const site = {
   name: 'Nikko S. Parungao',
   role: 'CS Student',
   location: 'Angeles City, PH',
-  resumeUrl: '/resume.pdf', // add the PDF to /public when ready
+  resumeUrl: '/Nikko_Parungao_CV.pdf', // lives in /public
   title: 'Beneath the Surface.',
   tagline:
     'CS student working across backend, data and AI. Learning each day by building.',
@@ -170,76 +170,155 @@ export const projects: Project[] = [
   },
 ]
 
-export type SkillTab = {
-  id: string
-  label: string
-  skills: string[]
-  certs: string[]
+export type SkillIcon = 'circle' | 'square' | 'diamond' | 'triangle' | 'hexagon' | 'star' | 'dot'
+export type SkillTabId = 'languages' | 'web-mobile' | 'backend-data' | 'ai-ml' | 'tools'
+
+export type Skill = {
+  name: string
+  /** Year last used; leave out if unknown (shows a dash) */
+  lastUsed?: number
+  /** Short proof label, e.g. "2 projects", "Certified", "Coursework" */
+  proof: string
+  /** "Where it's used" text */
+  where: string
+  /** Project slugs shown as tags; Enter opens the first one */
+  projects: string[]
 }
 
+export type SkillTab = {
+  id: SkillTabId
+  label: string
+  icon: SkillIcon
+  skills: Skill[]
+}
+
+// Backend & Data (Supabase text) is from the mockup. Everything else is a draft from the CV: review.
 export const skillTabs: SkillTab[] = [
   {
     id: 'languages',
     label: 'Languages',
-    skills: ['Python', 'Java', 'JavaScript', 'SQL', 'C#'],
-    certs: ['JavaScript Essentials 1 (Cisco)'],
+    icon: 'circle',
+    skills: [
+      { name: 'Python', lastUsed: 2026, proof: '1 project', where: "Used for Codely's Random Forest model, which sets the difficulty of each next problem.", projects: ['codely'] },
+      { name: 'JavaScript', lastUsed: 2026, proof: 'Certified', where: "The language behind TrialBite's React front end, backed by Cisco's JavaScript Essentials 1.", projects: ['trialbite'] },
+      { name: 'SQL', lastUsed: 2026, proof: '2 projects', where: "Queries and tables in the PostgreSQL databases behind TrialBite and HAUbout That Way?.", projects: ['trialbite', 'haubout-that-way'] },
+      { name: 'Java', proof: 'Coursework', where: 'Used across Computer Science coursework at Holy Angel University.', projects: [] },
+      { name: 'C#', proof: 'Coursework', where: 'Used across Computer Science coursework at Holy Angel University.', projects: [] },
+    ],
   },
   {
     id: 'web-mobile',
-    label: 'Web and Mobile',
-    skills: ['HTML', 'CSS', 'JavaScript', 'React', 'Flutter', 'Dart'],
-    certs: ['Responsive Web Design (freeCodeCamp)'],
+    label: 'Web & Mobile',
+    icon: 'square',
+    skills: [
+      { name: 'React', lastUsed: 2026, proof: '1 project', where: 'The front end of TrialBite, built solo and live on Vercel.', projects: ['trialbite'] },
+      { name: 'Flutter', lastUsed: 2025, proof: '3 projects', where: 'The app framework for HAUbout That Way?, VirtuoHero and WattsEnergy.', projects: ['haubout-that-way', 'virtuohero', 'wattsenergy'] },
+      { name: 'Dart', lastUsed: 2025, proof: '1 project', where: "The language of HAUbout That Way?'s Flutter app.", projects: ['haubout-that-way'] },
+      { name: 'HTML', lastUsed: 2026, proof: 'Certified', where: "Page structure for TrialBite, backed by freeCodeCamp's Responsive Web Design.", projects: ['trialbite'] },
+      { name: 'CSS', lastUsed: 2026, proof: 'Certified', where: "Styling for TrialBite and this portfolio, backed by freeCodeCamp's Responsive Web Design.", projects: ['trialbite'] },
+    ],
   },
   {
     id: 'backend-data',
-    label: 'Backend and Data',
-    skills: ['PostgreSQL', 'Supabase', 'AWS', 'Vercel'],
-    certs: [
-      'Relational Database (freeCodeCamp)',
-      'AWS Academy Cloud Foundations',
-      'Data Analytics Essentials (Cisco)',
+    label: 'Backend & Data',
+    icon: 'diamond',
+    skills: [
+      { name: 'Supabase', lastUsed: 2026, proof: '2 projects', where: 'The PostgreSQL database and sign-in behind TrialBite. It also holds the campus graph for HAUbout That Way?, 98 nodes joined by 115 connections, with admin-only sign-in so students never need an account.', projects: ['trialbite', 'haubout-that-way'] },
+      { name: 'PostgreSQL', lastUsed: 2026, proof: '2 projects', where: "The database under Supabase in TrialBite and HAUbout That Way?, backed by freeCodeCamp's Relational Database.", projects: ['trialbite', 'haubout-that-way'] },
+      { name: 'AWS', lastUsed: 2026, proof: 'Certified', where: 'AWS Academy Cloud Foundations, and Chief of Operations at the AWS Learning Club, HAU.', projects: [] },
+      { name: 'Vercel', lastUsed: 2026, proof: '1 project', where: 'Hosts TrialBite, and this portfolio.', projects: ['trialbite'] },
     ],
   },
   {
     id: 'ai-ml',
-    label: 'AI and ML',
-    skills: ['Random Forest', 'Gemini API', 'Claude API', 'Judge0'],
-    certs: [
-      'AI Fundamentals (IBM SkillsBuild)',
-      'Introduction to Generative AI (Google Cloud)',
-      'Career Essentials in Generative AI (Microsoft and LinkedIn)',
+    label: 'AI & ML',
+    icon: 'triangle',
+    skills: [
+      { name: 'Random Forest', lastUsed: 2026, proof: '1 project', where: "Codely's difficulty model: it picks how hard each next problem should be.", projects: ['codely'] },
+      { name: 'Gemini API', lastUsed: 2026, proof: '2 projects', where: 'Classifies each logged food in TrialBite, and powers VirtuoHero.', projects: ['trialbite', 'virtuohero'] },
+      { name: 'Claude API', lastUsed: 2026, proof: '1 project', where: "Grades students' follow-up answers in Codely.", projects: ['codely'] },
+      { name: 'Judge0', lastUsed: 2026, proof: '1 project', where: "Runs and checks every code submission in Codely's built-in coding environment.", projects: ['codely'] },
     ],
   },
   {
     id: 'tools',
     label: 'Tools',
-    skills: ['Git', 'GitHub', 'Figma', 'Docker'],
-    certs: [
-      'Introduction to Figma (Simplilearn)',
-      'CCNA Introduction to Networks and Endpoint Security (Cisco)',
+    icon: 'hexagon',
+    skills: [
+      { name: 'Git', lastUsed: 2026, proof: 'Daily use', where: 'Version control on every project.', projects: [] },
+      { name: 'GitHub', lastUsed: 2026, proof: 'Daily use', where: 'Hosts the repos and team collaboration for every project.', projects: [] },
+      { name: 'Figma', lastUsed: 2026, proof: 'Certified', where: "Screen designs and mockups, backed by Simplilearn's Introduction to Figma.", projects: [] },
+      { name: 'Docker', proof: 'Coursework', where: 'Containers for local development.', projects: [] },
     ],
   },
-  {
-    id: 'certs',
-    label: 'Certs',
-    skills: [],
-    certs: ['IT Fundamentals+ (CompTIA)'],
-  },
+]
+
+export type Cert = {
+  name: string
+  issuer: string
+  /** Which skill tab this certification backs up ('general' if none) */
+  tab: SkillTabId | 'general'
+  /** Footer line shown when the cert is selected */
+  note: string
+}
+
+export const certs: Cert[] = [
+  { name: 'IT Fundamentals+ (ITF+)', issuer: 'CompTIA', tab: 'general', note: 'CompTIA IT Fundamentals+ · General IT foundation.' },
+  { name: 'Responsive Web Design', issuer: 'freeCodeCamp', tab: 'web-mobile', note: 'freeCodeCamp Responsive Web Design · Proof for HTML and CSS in Web & Mobile.' },
+  { name: 'Relational Database', issuer: 'freeCodeCamp', tab: 'backend-data', note: 'freeCodeCamp Relational Database · Proof for PostgreSQL in Backend & Data.' },
+  { name: 'Cloud Foundations', issuer: 'AWS Academy', tab: 'backend-data', note: 'AWS Academy Cloud Foundations · Proof for AWS in Backend & Data.' },
+  { name: 'Introduction to Figma', issuer: 'Simplilearn', tab: 'tools', note: 'Simplilearn Introduction to Figma · Proof for Figma in Tools.' },
+  { name: 'CCNA: Introduction to Networks', issuer: 'Cisco', tab: 'tools', note: 'Cisco CCNA: Introduction to Networks · Networking fundamentals.' },
+  { name: 'JavaScript Essentials 1', issuer: 'Cisco', tab: 'languages', note: 'Cisco JavaScript Essentials 1 · Proof for JavaScript in Languages.' },
+  { name: 'Endpoint Security', issuer: 'Cisco', tab: 'tools', note: 'Cisco Endpoint Security · Security fundamentals.' },
+  { name: 'Data Analytics Essentials', issuer: 'Cisco', tab: 'backend-data', note: 'Cisco Data Analytics Essentials · Data skills in Backend & Data.' },
+  { name: 'AI Fundamentals', issuer: 'IBM SkillsBuild', tab: 'ai-ml', note: 'IBM SkillsBuild AI Fundamentals · Foundation for AI & ML.' },
+  { name: 'Introduction to Generative AI', issuer: 'Google Cloud', tab: 'ai-ml', note: 'Google Cloud Introduction to Generative AI · Foundation for AI & ML.' },
+  { name: 'Career Essentials in Generative AI', issuer: 'Microsoft and LinkedIn', tab: 'ai-ml', note: 'Microsoft and LinkedIn Career Essentials in Generative AI · Foundation for AI & ML.' },
 ]
 
 export type Role = {
   title: string
   org: string
+  /** Short labels for the timeline card */
+  cardTitle: string
+  cardOrg: string
   start: string
   end: string
+  /** Start/end as [year, month 1-12], used to place the card on the timeline */
+  from: [number, number]
+  to: [number, number]
+  /** 0 = top lane, 1 = second lane (for roles that overlap) */
+  lane: 0 | 1
+  /** Bullet points for the detail panel. Only Chief of Operations has text so far. */
+  bullets: string[]
 }
 
 export const roles: Role[] = [
-  { title: 'Chief of Operations', org: 'AWS Learning Club, HAU', start: 'Jun 2025', end: 'Mar 2026' },
-  { title: 'Finance Officer', org: 'Google Developer Groups on Campus, HAU', start: 'Jun 2025', end: 'Mar 2026' },
-  { title: 'Councilor for Human Relations', org: 'CSC-SoC, HAU', start: 'Jun 2024', end: 'Apr 2025' },
-  { title: 'Class Representative', org: 'School of Computing, HAU', start: 'Nov 2023', end: 'Mar 2024' },
-  { title: 'Staff for Finance', org: 'CSC-SoC, HAU', start: 'Jun 2023', end: 'Apr 2024' },
+  {
+    title: 'Staff for Finance', org: 'CSC-SoC, HAU', cardTitle: 'Staff for Finance', cardOrg: 'CSC-SoC',
+    start: 'Jun 2023', end: 'Apr 2024', from: [2023, 6], to: [2024, 4], lane: 0, bullets: [],
+  },
+  {
+    title: 'Class Representative', org: 'School of Computing, HAU', cardTitle: 'Class Rep', cardOrg: 'SoC',
+    start: 'Nov 2023', end: 'Mar 2024', from: [2023, 11], to: [2024, 3], lane: 1, bullets: [],
+  },
+  {
+    title: 'Councilor for Human Relations', org: 'CSC-SoC, HAU', cardTitle: 'Councilor, Human Relations', cardOrg: 'CSC-SoC',
+    start: 'Jun 2024', end: 'Apr 2025', from: [2024, 6], to: [2025, 4], lane: 0, bullets: [],
+  },
+  {
+    title: 'Chief of Operations', org: 'AWS Learning Club, HAU', cardTitle: 'Chief of Operations', cardOrg: 'AWS Learning Club',
+    start: 'Jun 2025', end: 'Mar 2026', from: [2025, 6], to: [2026, 3], lane: 0,
+    bullets: [
+      "Led preparation and setup of the club's booths at events it was invited to",
+      'Processed documents and secured the signatures needed for on-campus AWSLC events',
+    ],
+  },
+  {
+    title: 'Finance Officer', org: 'Google Developer Groups on Campus, HAU', cardTitle: 'Finance Officer', cardOrg: 'GDG on Campus',
+    start: 'Jun 2025', end: 'Mar 2026', from: [2025, 6], to: [2026, 3], lane: 1, bullets: [],
+  },
 ]
 
 
