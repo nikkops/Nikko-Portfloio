@@ -130,7 +130,7 @@
 /* White title card */
 .pdetail__card {
   width: 47vw;
-  min-height: 18.5vh;
+  height: 18.5vh; /* fixed, so the card is the same size for every project */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -155,7 +155,8 @@
 }
 .pdetail__name {
   margin-top: -0.6vh;
-  font-size: calc(clamp(2.4rem, min(5.4vw, 9.5vh), 7.5rem) * var(--name-scale, 1));
+  /* one size for every project, small enough that the longest name (HAUbout That Way?) fits */
+  font-size: clamp(2rem, min(4.3vw, 8vh), 6rem);
   line-height: 0.92;
   color: var(--navy);
   white-space: nowrap;
@@ -203,6 +204,9 @@
 .pdetail__desc {
   width: 43.5vw;
   margin: 3.2vh 0 0 3.5vw;
+  min-height: calc(2 * 1.55em + 5.2vh); /* always two lines tall, so Sections doesn't jump */
+  display: flex;
+  align-items: center;
   padding: 2.6vh 3vw;
   background: rgba(3, 22, 62, 0.92);
   color: var(--white);

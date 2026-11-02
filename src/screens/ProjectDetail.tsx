@@ -99,13 +99,7 @@ function Detail({ index }: { index: number }) {
         <div className="pdetail__card">
           <div className="pdetail__id">
             <p className="pdetail__num">Project {pad(index + 1)}</p>
-            <h1
-              className="pdetail__name"
-              // long names (e.g. "HAUbout That Way?") are set smaller so they fit the shorter card
-              style={{ ['--name-scale' as string]: project.name.length > 10 ? 0.62 : 1 }}
-            >
-              {project.name}
-            </h1>
+            <h1 className="pdetail__name">{project.name}</h1>
             <ul className="pdetail__stack" aria-label="Stack">
               {project.stack.map((t) => (
                 <li key={t}>{t}</li>

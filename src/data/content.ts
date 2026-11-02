@@ -74,7 +74,6 @@ export const projects: Project[] = [
     summary: 'Adaptive interview-prep platform for undergraduate CS students.',
     description:
       'Adaptive coding simulation platform for technical interview preparation of undergraduate CS students.',
-    outcome: 'Defended',
     sections: {
       overview:
         'Students solve problems in a built-in coding environment, a Random Forest model sets the difficulty of each next problem, and the Claude API grades their follow-up answers. My part: platform architecture and data flow, documentation and data cleaning.',
@@ -297,27 +296,39 @@ export type Role = {
 export const roles: Role[] = [
   {
     title: 'Staff for Finance', org: 'CSC-SoC, HAU', cardTitle: 'Staff for Finance', cardOrg: 'CSC-SoC',
-    start: 'Jun 2023', end: 'Apr 2024', from: [2023, 6], to: [2024, 4], lane: 0, bullets: [],
+    start: 'Jun 2023', end: 'Apr 2024', from: [2023, 6], to: [2024, 4], lane: 0, bullets: [
+      "Assisted with payment collection and provided manpower when needed.",
+      "Collected and recorded receipts to support the final financial statement."
+    ],
   },
   {
     title: 'Class Representative', org: 'School of Computing, HAU', cardTitle: 'Class Rep', cardOrg: 'SoC',
-    start: 'Nov 2023', end: 'Mar 2024', from: [2023, 11], to: [2024, 3], lane: 1, bullets: [],
+    start: 'Nov 2023', end: 'Mar 2024', from: [2023, 11], to: [2024, 3], lane: 1, bullets: [
+      "Relayed faculty announcements and student concerns between faculty and the class.",
+      "Communicated CSC-SoC announcements and events to the students in my class."
+    ],
   },
   {
     title: 'Councilor for Human Relations', org: 'CSC-SoC, HAU', cardTitle: 'Councilor, Human Relations', cardOrg: 'CSC-SoC',
-    start: 'Jun 2024', end: 'Apr 2025', from: [2024, 6], to: [2025, 4], lane: 0, bullets: [],
+    start: 'Jun 2024', end: 'Apr 2025', from: [2024, 6], to: [2025, 4], lane: 0, bullets: [
+      "Recruited staff members by interviewing candidates and evaluating their traits.",
+      "Conducted monthly check-ins with each committee on performance, staffing, and activities."
+    ],
   },
   {
     title: 'Chief of Operations', org: 'AWS Learning Club, HAU', cardTitle: 'Chief of Operations', cardOrg: 'AWS Learning Club',
     start: 'Jun 2025', end: 'Mar 2026', from: [2025, 6], to: [2026, 3], lane: 0,
     bullets: [
-      "Led preparation and setup of the club's booths at events it was invited to",
-      'Processed documents and secured the signatures needed for on-campus AWSLC events',
+      "Led preparation and setup of the club's booths at events it was invited to.",
+      'Processed documents and secured the signatures needed for on-campus AWSLC events.',
     ],
   },
   {
     title: 'Finance Officer', org: 'Google Developer Groups on Campus, HAU', cardTitle: 'Finance Officer', cardOrg: 'GDG on Campus',
-    start: 'Jun 2025', end: 'Mar 2026', from: [2025, 6], to: [2026, 3], lane: 1, bullets: [],
+    start: 'Jun 2025', end: 'Mar 2026', from: [2025, 6], to: [2026, 3], lane: 1, bullets: [
+      "Assisted the Finance Chief Officer in collecting payments for organization merchandise.",
+      "Attended CFA-led finance seminars on collection, auditing, and accounting."
+    ],
   },
 ]
 
@@ -327,7 +338,7 @@ export const about = {
   lines: [
     "I'm a Computer Science student at Holy Angel University, working across backend, data and AI. Outside class I've led in student organizations, from the School of Computing Student Council to AWS Learning Club and Google Developer Groups on Campus.",
   ],
-  portraitUrl: '', // set when Nikko picks a photo; empty shows the placeholder frame
+  portraitUrl: '/profile.jpg', // set when Nikko picks a photo; empty shows the placeholder frame
 }
 
 export type ArcanaId = 'fool' | 'magician' | 'emperor'
@@ -364,7 +375,7 @@ export const arcanaCards: ArcanaCardData[] = [
     kicker: 'I · The Magician · Skill and creation',
     heading: 'What I build',
     body: 'Apps across backend, data and AI: an adaptive interview-prep platform, an allergen tracker and a campus navigation app.',
-    currently: "Building this portfolio. Learning [what you're learning].",
+    currently: "Exploring more backend solutions and platforms, specificall AWS and cloud computing",
     tags: ['Backend', 'Data', 'AI'],
   },
   {
