@@ -1,13 +1,15 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Background from './Background'
+import ScreenTransition from './ScreenTransition'
 
 export default function Layout() {
+  const { pathname } = useLocation()
   return (
     <>
       <Background />
-      <main className="screen">
+      <ScreenTransition pathname={pathname}>
         <Outlet />
-      </main>
+      </ScreenTransition>
     </>
   )
 }

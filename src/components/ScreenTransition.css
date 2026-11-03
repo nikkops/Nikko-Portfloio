@@ -1,0 +1,11 @@
+/* Holds the outgoing screen's copy while its panels slide off. Never interactive. */
+.screen__ghost {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.screen__ghost:empty {
+  display: none;
+}

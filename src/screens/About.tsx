@@ -3,7 +3,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import ArcanaCard from '../components/ArcanaCard'
 import KeyGuide from '../components/KeyGuide'
 import { about, arcanaCards, site } from '../data/content'
+import { useTypewriter } from '../lib/useTypewriter'
 import './About.css'
+
+// The newest few characters fade in individually; FADE_TAIL × 20ms per char covers the 140ms fade
+const FADE_TAIL = 8
 
 function Portrait({ tall = false }: { tall?: boolean }) {
   return (
@@ -33,6 +37,17 @@ export default function About() {
   const lastLine = line >= about.lines.length - 1
   const toggle = (i: number) => setFlipped((f) => f.map((v, idx) => (idx === i ? !v : v)))
 
+  // The first line waits for the box to finish sliding in; later lines start almost at once
+  const text = about.lines[line]
+  const typer = useTypewriter(text, line === 0 ? 450 : 120)
+
+  // Like game dialogue: the first press finishes the line, the next one moves on
+  const advance = () => {
+    if (!typer.done) typer.skip()
+    else if (!lastLine) setLine((l) => l + 1)
+    else setRevealed(true)
+  }
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.altKey || e.ctrlKey || e.metaKey) return
@@ -52,15 +67,14 @@ export default function About() {
           const active = document.activeElement
           if (active instanceof HTMLAnchorElement || active instanceof HTMLButtonElement) return
           if (revealed) toggle(selected)
-          else if (!lastLine) setLine((l) => l + 1)
-          else setRevealed(true)
+          else advance()
           break
         }
       }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
-  }, [navigate, revealed, selected, lastLine])
+  })
 
   return (
     <div className="about" data-revealed={revealed}>
@@ -154,10 +168,25 @@ export default function About() {
       <div className="about__bottom">
         {!revealed ? (
           <div className="about__dialogue-wrap">
-            <div className="about__dialogue">
+            <div className="about__dialogue" onClick={advance}>
               <p className="about__speaker">Nikko</p>
-              <p className="about__line">{about.lines[line]}</p>
-              {!lastLine && <span className="about__next" aria-hidden="true" />}
+              <p className="about__line">
+                <span className="sr-only">{text}</span>
+                {/* Typed text, plus the untyped rest laid out but invisible so lines never reflow */}
+                <span aria-hidden="true">
+                  {text.slice(0, Math.max(0, typer.count - FADE_TAIL))}
+                  {Array.from({ length: Math.min(typer.count, FADE_TAIL) }, (_, k) => {
+                    const i = typer.count - Math.min(typer.count, FADE_TAIL) + k
+                    return (
+                      <span className="about__ch" key={`${line}-${i}`}>
+                        {text[i]}
+                      </span>
+                    )
+                  })}
+                  <span className="about__rest">{text.slice(typer.count)}</span>
+                </span>
+              </p>
+              {typer.done && <span className="about__next" aria-hidden="true" />}
             </div>
           </div>
         ) : (
@@ -173,7 +202,7 @@ export default function About() {
             <KeyGuide
               prompt="What do you want to know?"
               hints={[
-                { keys: ['Enter'], label: 'Next line' },
+                { keys: ['Enter'], label: !typer.done ? 'Skip' : lastLine ? 'Continue' : 'Next line' },
                 { keys: ['Click deck'], label: 'Reveal' },
                 { keys: ['Esc'], label: 'Back' },
               ]}

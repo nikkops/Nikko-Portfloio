@@ -78,7 +78,7 @@ export const projects: Project[] = [
       overview:
         'Students solve problems in a built-in coding environment, a Random Forest model sets the difficulty of each next problem, and the Claude API grades their follow-up answers. My part: platform architecture and data flow, documentation and data cleaning.',
       // draft from the CV: review
-      how: 'Built in four stages. Judge0 runs and checks each submission, a Random Forest model picks the next difficulty, and the Claude API grades follow-up answers. The design drew on interviews with practitioners from Shore360 Agency and Toro Cloud plus an AI expert consultation.',
+      how: 'Built in four stages. Judge0 runs and checks each submission, a Random Forest model picks the next difficulty, and the Claude API grades follow-up answers.',
       links: LINKS_TODO,
     },
   },
@@ -336,7 +336,7 @@ export const roles: Role[] = [
 export const about = {
   // Each entry is one "line" of the dialogue box; Enter advances.
   lines: [
-    "I'm a Computer Science student at Holy Angel University, working across backend, data and AI. Outside class I've led in student organizations, from the School of Computing Student Council to AWS Learning Club and Google Developer Groups on Campus.",
+    "Hi! I am a Computer Science student at Holy Angel University, working across backend, data and AI. Outside class I've led in student organizations, from the School of Computing Student Council to AWS Learning Club and Google Developer Groups on Campus.",
   ],
   portraitUrl: '/profile.jpg', // set when Nikko picks a photo; empty shows the placeholder frame
 }
@@ -375,7 +375,7 @@ export const arcanaCards: ArcanaCardData[] = [
     kicker: 'I · The Magician · Skill and creation',
     heading: 'What I build',
     body: 'Apps across backend, data and AI: an adaptive interview-prep platform, an allergen tracker and a campus navigation app.',
-    currently: "Exploring more backend solutions and platforms, specificall AWS and cloud computing",
+    currently: "Exploring more backend solutions and platforms, specifically AWS and cloud computing",
     tags: ['Backend', 'Data', 'AI'],
   },
   {
